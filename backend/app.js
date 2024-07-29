@@ -16,7 +16,7 @@ mongoose
 
 //! Cors Configuration
 const corsOptions = {
-  origin: ["https://mern-expense-tracker-oy9i.onrender.com"],
+  origin: ["https://finance-buddy.netlify.app/"],
 };
 app.use(cors(corsOptions));
 //!Middlewares
