@@ -15,10 +15,21 @@ mongoose
   .catch((e) => console.log(e));
 
 //! Cors Configuration
-const corsOptions = {
-  origin: ["https://finance-buddy.netlify.app/"],
+// const corsOptions = {
+//   origin: true,
+// };
+var whitelist = ["https://finance-buddy.netlify.app", "http://localhost:5173"];
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two parameters: error and options
 };
-app.use(cors(corsOptions));
+
+app.use(cors(corsOptionsDelegate));
 //!Middlewares
 app.use(express.json()); //? Pass incoming json data
 
