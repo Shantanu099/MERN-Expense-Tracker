@@ -16,7 +16,7 @@ mongoose
 
 //! Cors Configuration
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["https://mern-expense-tracker-oy9i.onrender.com"],
 };
 app.use(cors(corsOptions));
 //!Middlewares
